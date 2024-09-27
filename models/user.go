@@ -1,9 +1,11 @@
 package models
 
+// User represents a user model for MongoDB
 type User struct {
-	ID        uint   `josn:"id"` // Auto-incrementing primary key
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	Email     string `json:"email"`
-	Password  string `json:"password"`
+	ID        string `bson:"_id,omitempty" json:"id"` // Use string for MongoDB ObjectID
+	FirstName string `bson:"first_name" json:"first_name"`
+	LastName  string `bson:"last_name" json:"last_name"`
+	Email     string `bson:"email" json:"email"`
+	Password  string `bson:"password" json:"password"`
+	Token     string
 }
