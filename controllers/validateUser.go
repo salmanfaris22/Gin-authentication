@@ -26,6 +26,26 @@ func passCheck(user models.User) error {
 	}
 	return errors.New("pass word not match")
 }
+func useCheck(Token string) (error, models.User) {
+
+	for _, vale := range UserDemo {
+		if vale.Token == Token {
+
+			return nil, vale
+		}
+	}
+	return errors.New("token Cant Find"), models.User{}
+}
+
+func TokenSet(id, token string) (error, models.User) {
+	for i, vale := range UserDemo {
+		if vale.ID == id {
+			UserDemo[i].Token = token
+			return nil, vale
+		}
+	}
+	return errors.New("token Cant Find"), models.User{}
+}
 
 // func setSeqrity(id, token string) error {
 // 	for i, vale := range UserDemo {

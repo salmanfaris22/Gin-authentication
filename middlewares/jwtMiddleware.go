@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -8,10 +9,11 @@ import (
 
 func JWTAuthMiddleware() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		_, err := ctx.Cookie("token")
+		token, err := ctx.Cookie("token")
 
+		fmt.Println(token)
 		if err != nil {
-			ctx.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+			ctx.JSON(http.StatusUnauthorized, gin.H{"error": err})
 			ctx.Abort()
 			return
 		}
