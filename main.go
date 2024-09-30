@@ -24,7 +24,7 @@ func main() {
 	protuct := router.Group("/")
 	protuct.Use(middlewares.JWTAuthMiddleware())
 	{
-
+		protuct.POST("/messages", controllers.ChatApp)
 		protuct.POST("/getUser", controllers.GetUser)
 		protuct.GET("/logout", controllers.LogOut)
 

@@ -1,6 +1,5 @@
 package models
 
-// User represents a user model for MongoDB
 type User struct {
 	ID        string `bson:"_id,omitempty" json:"id"` // Use string for MongoDB ObjectID
 	FirstName string `bson:"first_name" json:"first_name"`
