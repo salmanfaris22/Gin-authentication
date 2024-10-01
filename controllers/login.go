@@ -29,13 +29,13 @@ func LogineUser(ctx *gin.Context) {
 	}
 
 	token, err := utils.GeneretJWT(us.ID)
-	ctx.SetCookie("auth", token)
+	// ctx.SetCookie("auth", token,70,)   set
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	// ctx.SetCookie("token", token, 3600, "/", "localhost", false, true)
+	ctx.SetCookie("token", token, 3600, "*/*", "localhost", false, true)
 	err, TokenUser := TokenSet(us.ID, token)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

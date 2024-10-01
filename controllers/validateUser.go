@@ -51,6 +51,7 @@ func TokenSet(id, token string) (error, models.User) {
 // http only cookie
 // *http.Cookie
 // set-cookie header
+//jwt works accecc refersh token
 
 // func setSeqrity(id, token string) error {
 // 	for i, vale := range UserDemo {

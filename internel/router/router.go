@@ -30,10 +30,10 @@ func (i *impel) Start() {
 	i.gin.POST("/login", controllers.LogineUser)
 
 	protuct := i.gin.Group("/")
-	protuct.Use(middlewares.JWTAuthMiddleware())
+	protuct.Use()
 	{
 		// protuct.POST("/messages", controllers.ChatApp)
-		protuct.POST("/getUser", controllers.GetUser)
+		protuct.POST("/getUser", middlewares.JWTAuthMiddleware(), controllers.GetUser)
 		protuct.GET("/logout", controllers.LogOut)
 
 	}
