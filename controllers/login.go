@@ -29,6 +29,7 @@ func LogineUser(ctx *gin.Context) {
 	}
 
 	token, err := utils.GeneretJWT(us.ID)
+	ctx.SetCookie("auth", token)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

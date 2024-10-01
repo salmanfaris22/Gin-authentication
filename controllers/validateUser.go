@@ -47,6 +47,11 @@ func TokenSet(id, token string) (error, models.User) {
 	return errors.New("token Cant Find"), models.User{}
 }
 
+// bcrypt
+// http only cookie
+// *http.Cookie
+// set-cookie header
+
 // func setSeqrity(id, token string) error {
 // 	for i, vale := range UserDemo {
 // 		if vale.ID == id {
